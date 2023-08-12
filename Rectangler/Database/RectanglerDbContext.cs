@@ -13,6 +13,7 @@ public class RectanglerDbContext : DbContext
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
-		modelBuilder.Entity<Rectangle>();
+		var builder = modelBuilder.Entity<Rectangle>();
+		builder.HasIndex(e => new { e.Left, e.Top, e.Right, e.Bottom});
 	}
 }

@@ -1,8 +1,7 @@
-﻿namespace Rectangler.DataTransferObjects
+﻿namespace Rectangler.DataTransferObjects;
+
+public sealed class RectanglesByPointDto
 {
-	public sealed class RectanglesByPointDto
-	{
-		public required PointDto Point { get; init; }
-		public required RectangleDto[] Rectangles { get; init; }
-	}
+	public required PointDto Point { get; init; }
+	public required RectangleDto[] Rectangles { get; init; }
 }

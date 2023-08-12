@@ -1,16 +1,15 @@
 ﻿namespace Rectangler.Database;
 
 using Entities;
-using Microsoft.EntityFrameworkCore;
 
 public static class RectanglerDbInitializer
 {
 	private static RectanglerDbContext? _context;
-	private static readonly int _rectanglesCount = 200;
-	private static readonly int _minX = -1000;
-	private static readonly int _maxX = 1000;
-	private static readonly int _minY = -1000;
-	private static readonly int _maxY = 1000;
+	private const int RectanglesCount = 200;
+	private const int MinX = 0;
+	private const int MaxX = 2000;
+	private const int MinY = 0;
+	private const int MaxY = 2000;
 
 	public static void Initialize(RectanglerDbContext context)
 	{
@@ -21,7 +20,7 @@ public static class RectanglerDbInitializer
 		if (context.Rectangles.Any())
 			return;
 
-		PopulateRectanglesIntoDb(_rectanglesCount);
+		PopulateRectanglesIntoDb(RectanglesCount);
 
 		_context.SaveChanges();
 	}
@@ -33,18 +32,18 @@ public static class RectanglerDbInitializer
 
 		for (var i = 0; i < rectanglesCount; i++)
 		{
-			var left = Random.Shared.Next(_minX, _maxX - 1);
-			var top = Random.Shared.Next(_minY, _maxY - 1);
-			var width = Random.Shared.Next(1, _maxX - left);
-			var height = Random.Shared.Next(1, _maxY - top);
+			var left = Random.Shared.Next(MinX, MaxX);
+			var top = Random.Shared.Next(MinY, MaxY);
+			var right = Random.Shared.Next(left + 1, MaxX + 1);
+			var bottom = Random.Shared.Next(top + 1, MaxY + 1);
 
 			_context.Rectangles.Add(
 				new Rectangle
 				{
 					Left = left,
 					Top = top,
-					Width = width,
-					Height = height
+					Right = right,
+					Bottom = bottom
 				});
 		}
 	}

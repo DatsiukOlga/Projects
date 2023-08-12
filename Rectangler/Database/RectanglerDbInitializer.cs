@@ -33,16 +33,16 @@ public static class RectanglerDbInitializer
 
 		for (var i = 0; i < rectanglesCount; i++)
 		{
-			var topLeftX = Random.Shared.Next(_minX, _maxX - 1);
-			var topLeftY = Random.Shared.Next(_minY, _maxY - 1);
-			var width = Random.Shared.Next(1, _maxX - topLeftX);
-			var height = Random.Shared.Next(1, _maxY - topLeftY);
+			var left = Random.Shared.Next(_minX, _maxX - 1);
+			var top = Random.Shared.Next(_minY, _maxY - 1);
+			var width = Random.Shared.Next(1, _maxX - left);
+			var height = Random.Shared.Next(1, _maxY - top);
 
 			_context.Rectangles.Add(
 				new Rectangle
 				{
-					TopLeftX = topLeftX,
-					TopLeftY = topLeftY,
+					Left = left,
+					Top = top,
 					Width = width,
 					Height = height
 				});

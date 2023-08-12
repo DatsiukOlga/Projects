@@ -25,8 +25,8 @@ namespace Rectangler.Controllers
 					.ToListAsync())
 					.Select(rect => new RectangleDto
 					{
-						TopLeftX = rect.TopLeftX,
-						TopLeftY = rect.TopLeftY,
+						Left = rect.Left,
+						Top = rect.Top,
 						Width = rect.Width,
 						Height = rect.Height
 					})
@@ -42,8 +42,8 @@ namespace Rectangler.Controllers
 					.Where(rect => PointMatchesRectangle(point, rect))
 					.Select(rect => new RectangleDto
 					{
-						TopLeftX = rect.TopLeftX,
-						TopLeftY = rect.TopLeftY,
+						Left = rect.Left,
+						Top = rect.Top,
 						Width = rect.Width,
 						Height = rect.Height
 					})
@@ -64,8 +64,8 @@ namespace Rectangler.Controllers
 						.Where(rect => PointMatchesRectangle(point, rect))
 						.Select(rect => new RectangleDto
 						{
-							TopLeftX = rect.TopLeftX,
-							TopLeftY = rect.TopLeftY,
+							Left = rect.Left,
+							Top = rect.Top,
 							Width = rect.Width,
 							Height = rect.Height
 						})
@@ -75,10 +75,10 @@ namespace Rectangler.Controllers
 
 		private static bool PointMatchesRectangle(PointDto point, Rectangle rectangle)
 		{
-			return point.X >= rectangle.TopLeftX &&
-			       point.X <= rectangle.TopLeftX + rectangle.Width &&
-			       point.Y >= rectangle.TopLeftY &&
-			       point.Y <= rectangle.TopLeftY + rectangle.Height;
+			return point.X >= rectangle.Left &&
+			       point.X <= rectangle.Left + rectangle.Width &&
+			       point.Y >= rectangle.Top &&
+			       point.Y <= rectangle.Top + rectangle.Height;
 		}
 	}
 }

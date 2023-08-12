@@ -78,7 +78,7 @@ namespace Rectangler.Controllers
 			return point.X >= rectangle.Left &&
 			       point.X <= rectangle.Left + rectangle.Width &&
 			       point.Y >= rectangle.Top &&
-			       point.Y <= rectangle.Top + rectangle.Height;
+			       point.Y <= rectangle.Top - rectangle.Height;
 		}
 	}
 }
